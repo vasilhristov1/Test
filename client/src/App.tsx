@@ -165,7 +165,7 @@ export default function App() {
         </div>
 
         <div className="buttonsWrap">
-          <button className="btn yes" onClick={sendEmail} disabled={sending}>
+          <button className="btn yes" onClick={onClickYes} disabled={sending}>
             {showText ? "Thank you with all my heart my dear Ninon ❤️. I am in the other room for a hug :)" : "Yes"}
           </button>
 
