@@ -4,7 +4,6 @@ import cors from "cors";
 import dotenv from "dotenv";
 import path from "path";
 import { fileURLToPath } from "url";
-import fs from "fs";
 
 dotenv.config();
 
@@ -25,28 +24,10 @@ const transporter = nodemailer.createTransport({
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-function getAttachments() {
-  const dir = path.join(__dirname, "email-assets");
-  const files = ["photo1.jpg"];
-
-  // Ensure files exist (nice error message)
-  for (const f of files) {
-    const p = path.join(dir, f);
-    if (!fs.existsSync(p)) {
-      throw new Error(`Missing email attachment: server/email-assets/${f}`);
-    }
-  }
-
-  return files.map((f) => ({
-    filename: f,
-    path: path.join(dir, f),
-  }));
-}
-
 app.post("/send-email", async (req, res) => {
   try {
     const text =
-`My Nikol,
+`My Dearest Nikol,
 
 I sent this from the little page I made for you — because I want you to know I’m serious.
 
@@ -64,7 +45,6 @@ Vasil ❤️
       to: process.env.EMAIL_TO,
       subject: "For you, my Nikol ❤️",
       text,
-      attachments: getAttachments(),
     });
 
     res.json({ success: true });
