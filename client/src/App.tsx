@@ -42,6 +42,7 @@ export default function App() {
     null
   );
   const [sending, setSending] = useState(false);
+  const [showText, setShowText] = useState(false);
 
   const photos = useMemo(
     () => [
@@ -135,6 +136,10 @@ export default function App() {
     }
   }
 
+  async function onClickYes() {
+    setShowText(true);
+  }
+
   return (
     <div className="page">
       <div className="card" ref={containerRef}>
@@ -161,7 +166,7 @@ export default function App() {
 
         <div className="buttonsWrap">
           <button className="btn yes" onClick={sendEmail} disabled={sending}>
-            {sending ? "Sending..." : "Yes"}
+            {showText ? "Thank you with all my heart my dear Ninon ❤️. I am in the other room for a hug :)" : "Yes"}
           </button>
 
           {/* "No" is absolutely positioned & dodges */}
