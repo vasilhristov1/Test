@@ -14,7 +14,7 @@ import photo10 from "./assets/photo10.jpg";
 import photo11 from "./assets/photo11.jpeg";
 import photo12 from "./assets/photo12.jpeg";
 
-const API_URL = "https://i-love-nikol.onrender.com";
+// const API_URL = "https://i-love-nikol.onrender.com";
 
 type ToastType = "success" | "error" | "info";
 
@@ -41,7 +41,7 @@ export default function App() {
   const [toast, setToast] = useState<{ type: ToastType; text: string } | null>(
     null
   );
-  const [sending, setSending] = useState(false);
+  // const [sending, setSending] = useState(false);
   const [showText, setShowText] = useState(false);
 
   const photos = useMemo(
@@ -116,25 +116,25 @@ export default function App() {
     // moveNoButton();
   }
 
-  async function sendEmail() {
-    if (sending) return;
-    setSending(true);
+  // async function sendEmail() {
+  //   if (sending) return;
+  //   setSending(true);
 
-    try {
-      const res = await fetch(`${API_URL}/send-email`, { method: "POST" });
-      const data = await res.json();
+  //   try {
+  //     const res = await fetch(`${API_URL}/send-email`, { method: "POST" });
+  //     const data = await res.json();
 
-      if (data?.success) {
-        showToast("success", "Sent! ❤️ Check your email");
-      } else {
-        showToast("error", "Failed to send email.");
-      }
-    } catch {
-      showToast("error", "Server error.");
-    } finally {
-      setSending(false);
-    }
-  }
+  //     if (data?.success) {
+  //       showToast("success", "Sent! ❤️ Check your email");
+  //     } else {
+  //       showToast("error", "Failed to send email.");
+  //     }
+  //   } catch {
+  //     showToast("error", "Server error.");
+  //   } finally {
+  //     setSending(false);
+  //   }
+  // }
 
   async function onClickYes() {
     setShowText(true);
@@ -165,7 +165,7 @@ export default function App() {
         </div>
 
         <div className="buttonsWrap">
-          <button className="btn yes" onClick={onClickYes} disabled={sending}>
+          <button className="btn yes" onClick={onClickYes} disabled={showText}>
             {showText ? "Thank you with all my heart my dear Ninon ❤️. I am in the other room for a hug :)" : "Yes"}
           </button>
 
